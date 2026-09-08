@@ -270,6 +270,15 @@
                 grid-template-columns: 1fr
             }
         }
+
+        footer {
+            border-top: 1px solid #d2c9ba;
+            padding: 25px 7%;
+            display: flex;
+            justify-content: space-between;
+            color: #776f63;
+            font-size: 12px
+        }
     </style>
 </head>
 
@@ -280,6 +289,15 @@
     <main class="wrap">
         <div id="app">Loading…</div>
     </main>
+    <footer>
+        <span>© 2018 DR.MOTORS</span><a href="mailto:drmotorscars@gmail.com">Contact by email</a>
+        <div>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./privacy-policy.html">Privacy Policy</a>
+            <a href="./terms.html">Terms</a>
+        </div>
+    </footer>
     <script>
         const SHEET_URL = "https://docs.google.com/spreadsheets/d/1_qEWJ3grdeAajNCaCUiDg7GYgW8efa_vRcc4u12Xsn4/gviz/tq?tqx=out:csv&gid=0";
         const norm = v => String(v ?? "").trim().toUpperCase().replace(/\s+/g, "");
