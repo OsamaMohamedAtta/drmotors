@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DR.MOTORS — Vehicle Lookup</title>
+    <meta name="description" content="DR.MOTORS vehicle lookup by VIN.">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #eee9df;
+            color: #25231f;
+            font-family: Arial, sans-serif
+        }
+
+        a {
+            color: inherit
+        }
+
+        .brand {
+            font: 700 27px Georgia, serif;
+            letter-spacing: -.05em
+        }
+
+        header {
+            padding: 24px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #d2c9ba
+        }
+
+        .meta {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #776f63
+        }
+
+        .hero {
+            max-width: 1250px;
+            margin: auto;
+            padding: 85px 7vw;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 70px;
+            align-items: center
+        }
+
+        .k {
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #9a7540;
+            font-weight: bold
+        }
+
+        h1 {
+            font: 400 clamp(55px, 7vw, 100px)/.9 Georgia, serif;
+            letter-spacing: -.07em;
+            margin: 18px 0 28px
+        }
+
+        .copy {
+            font: 18px/1.8 Georgia, serif;
+            color: #6e675d;
+            max-width: 560px
+        }
+
+        .form {
+            background: #24231f;
+            color: white;
+            padding: 38px;
+            box-shadow: 24px 24px 0 #d5ccbd
+        }
+
+        .form input {
+            width: 100%;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid #6d685e;
+            outline: 0;
+            color: white;
+            padding: 18px 0;
+            font: 18px monospace;
+            text-transform: uppercase;
+            margin: 10px 0 22px
+        }
+
+        .form button {
+            width: 100%;
+            padding: 17px;
+            border: 0;
+            background: #aa8046;
+            color: white;
+            font-weight: bold;
+            cursor: pointer
+        }
+
+        .status {
+            font-size: 12px;
+            color: #e2b9a4;
+            margin-top: 13px
+        }
+
+        .rule {
+            border-top: 1px solid #d2c9ba;
+            border-bottom: 1px solid #d2c9ba;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            font-size: 10px;
+            color: #776f63
+        }
+
+        .features {
+            max-width: 1250px;
+            margin: auto;
+            padding: 70px 7vw 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 55px
+        }
+
+        .feature {
+            border-top: 2px solid #25231f;
+            padding-top: 15px
+        }
+
+        .feature h3 {
+            font: 400 28px Georgia, serif;
+            margin: 35px 0 10px
+        }
+
+        .feature p {
+            color: #776f63;
+            line-height: 1.7
+        }
+
+        footer {
+            border-top: 1px solid #d2c9ba;
+            padding: 25px 7%;
+            display: flex;
+            justify-content: space-between;
+            color: #776f63;
+            font-size: 12px
+        }
+
+        @media(max-width:800px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 55px
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .rule {
+                display: none
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">DR.MOTORS</div>
+        <div class="meta">Independent vehicle records</div>
+    </header>
+    <div class="rule"><span>Research</span><span>Inspect</span><span>Decide</span></div>
+    <main>
+        <section class="hero">
+            <div>
+                <div class="k">The vehicle file</div>
+                <h1>Look closer.<br>Buy smarter.</h1>
+                <p class="copy">Enter a vehicle identification number and open the available vehicle file in moments.
+                </p>
+            </div>
+            <div class="form">
+                <div class="meta" style="color:#bbb3a7">Enter vehicle VIN</div><input id="vin" type="text"
+                    placeholder="17-character VIN" autocomplete="off" autocapitalize="characters"
+                    spellcheck="false"><button onclick="go()">OPEN VEHICLE FILE</button>
+                <div id="status" class="status"></div>
+            </div>
+        </section>
+        <section class="features">
+            <div class="feature">
+                <div class="k">01</div>
+                <h3>Identify</h3>
+                <p>Use the VIN as the vehicle's unique reference.</p>
+            </div>
+            <div class="feature">
+                <div class="k">02</div>
+                <h3>Inspect</h3>
+                <p>Review available specifications, stock reference and photography.</p>
+            </div>
+            <div class="feature">
+                <div class="k">03</div>
+                <h3>Go deeper</h3>
+                <p>Request the complete report when you need more detail.</p>
+            </div>
+        </section>
+    </main>
+    <footer><span>© 2018 DR.MOTORS</span><a href="mailto:contact@drmotors.example">Contact by email</a></footer>
+    <script>
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/1_qEWJ3grdeAajNCaCUiDg7GYgW8efa_vRcc4u12Xsn4/gviz/tq?tqx=out:csv&gid=0";
+        const norm = v => String(v ?? "").trim().toUpperCase().replace(/\s+/g, "");
+        function csv(t) { let R = [], r = [], c = "", q = 0; for (let i = 0; i < t.length; i++) { let x = t[i], n = t[i + 1]; if (q) { if (x == '"' && n == '"') { c += '"'; i++ } else if (x == '"') q = 0; else c += x } else if (x == '"') q = 1; else if (x == ',') { r.push(c); c = "" } else if (x == '\n') { r.push(c.replace(/\r$/, "")); R.push(r); r = []; c = "" } else c += x } if (c || r.length) { r.push(c); R.push(r) } return R }
+        async function data() { let r = await fetch(SHEET_URL); let a = csv(await r.text()), h = a[0] || []; return a.slice(1).map(x => Object.fromEntries(h.map((k, i) => [k.trim(), (x[i] || "").trim()]))).filter(x => x.VIN) }
+        const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[m]));
+        const pics = v => ["Photo1", "Photo2", "Photo3", "Photo4"].map(k => v[k]).filter(Boolean).filter((x, i, a) => a.indexOf(x) == i);
+        async function go() { let s = document.getElementById("status"), v = norm(document.getElementById("vin").value); s.textContent = "Searching…"; if (!v) { s.textContent = "Enter a VIN first."; return } try { let a = await data(), x = a.find(x => norm(x.VIN) == v); if (x) location.href = "vehicle.html?id=" + encodeURIComponent(x.VIN); else s.textContent = "No matching vehicle file was found." } catch (e) { s.textContent = "The vehicle database is temporarily unavailable." } } 
+    </script>
+</body>
+
+</html>
