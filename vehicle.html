@@ -280,6 +280,8 @@
             font-size: 12px
         }
     </style>
+
+    <script src="https://pl31258225.profitableratecpmnetwork.com/1d/d3/fa/1dd3fac37a62303266c6ed59bdebd163.js"></script>
 </head>
 
 <body>
@@ -306,6 +308,9 @@
         const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[m]));
         const pics = v => ["Photo1", "Photo2", "Photo3", "Photo4"].map(k => v[k]).filter(Boolean).filter((x, i, a) => a.indexOf(x) == i);
         async function render() { let a = document.getElementById("app"), id = norm(new URLSearchParams(location.search).get("id")); try { let vs = await data(), v = vs.find(x => norm(x.VIN) == id); if (!v) { a.innerHTML = '<div class="empty">Vehicle file not found.</div>'; return } let p = pics(v); document.title = "DR.MOTORS — " + (v["Motors Name"] || "Vehicle"); a.innerHTML = `<div class="k">Vehicle file</div><h1>${esc(v["Motors Name"] || "Vehicle")}</h1><div class="vin">VIN · ${esc(v.VIN)}</div><div class="layout"><section><div class="photos">${p.length ? p.map(x => `<img src="${esc(x)}" loading="lazy" onerror="this.remove()">`).join("") : '<div class="empty">Photography unavailable.</div>'}</div></section><aside><div class="rows">${[["Model / Year", v.Model], ["Color", v.Colors], ["Mileage", v.KM], ["Engine", v.Engine], ["Lot Number", v.LotNumber]].map(x => `<div class="row"><div class="label">${x[0]}</div><div class="value">${esc(x[1] || "—")}</div></div>`).join("")}</div><div class="buy"><div class="label" style="color:#bdb5aa">Full report</div><div class="amount">$200</div><div style="color:#c7c0b6;font-size:13px;margin-bottom:18px">Request the complete vehicle report.</div><button onclick="location.href='mailto:drmotorscars@gmail.com'">REQUEST REPORT</button></div><div class="contact">Questions? <a href="mailto:drmotorscars@gmail.com">Contact by email</a></div></aside></div>` } catch (e) { a.innerHTML = '<div class="empty">Unable to load this vehicle file.</div>' } } render()</script>
+
+    <!-- Adsterra Social Bar -->
+    <script src="https://pl31258226.profitableratecpmnetwork.com/04/96/f0/0496f091ee3ffc18c01af06b872b0ed9.js"></script>
 </body>
 
 </html>
